@@ -1,8 +1,6 @@
 import os
-from http.client import responses
 
 import requests
-import bs4
 from bs4 import BeautifulSoup
 from requests.exceptions import MissingSchema
 
@@ -11,7 +9,6 @@ FILE_PATH = "cards.txt"
 OUTPUT_DIR = "out_images"
 
 def main():
-
     with open(FILE_PATH, "r") as f:
         cards = f.readlines()
 
@@ -20,22 +17,38 @@ def main():
     for card in cards:
         print(f"Downloading {card}...", end = "")
 
-        params = {"name": f'+{"+".join(f"[{x}]" for x in card.split(" "))}'}
-        response = requests.get(BASE_URL, params=params)
+        params = { "name": f'+{"+".join(f"[{x}]" for x in card.split(" "))}' }
+        response = requests.get(BASE_URL, params = params)
 
         if "en-us" not in response.url:
             print(f"Card not found!")
             continue
 
-        response = requests.get(response.url.replace("en-us", "it-it"))
-        soup = BeautifulSoup(response.text, "html.parser")
-
-        img_tag = soup.find_all("img")
-
-        img = img_tag[3]["src"]
+        text = response.text
+        url_it = response.url.replace("en-us", "it-it")
 
         try:
-            img = requests.get(img)
+            response = requests.get(url_it)
+            text = response.text
+        except MissingSchema:
+            print(f"(en-us) ", end = "")
+            pass
+        print(f"(it-it) ", end = "")
+        soup = BeautifulSoup(text, "html.parser")
+
+        imgs = soup.find_all("img")
+        url = ""
+        for img in imgs:
+            if img.has_attr("data-testid") and img["data-testid"] == "cardFrontImage":
+                url = img.get("src")
+                break
+
+        if not url:
+            print("QUESTO NON DOVREBBE ESSERE POSSIBILE!")
+            continue
+
+        try:
+            img = requests.get(url)
         except MissingSchema:
             print(f"Image not found! (my bad)")
             continue
