@@ -1,81 +1,86 @@
-1 Adrix and Nev, Twincasters (C21) 9 F
-1 Arashi, the Sky Asunder (C21) 185
-1 Arcane Signet (MIC) 157
-1 Beast Within (DDL) 69
-1 Biomass Mutation (GTC) 213
-1 Biomathematician (STX) 164
-1 Blighted Woodland (MIC) 166
-1 Champion of Wits (AFC) 80
-1 Coiling Oracle (DIS) 107
-1 Command Tower (CMR) 479
-1 Commander's Insight (C21) 23
-1 Crafty Cutpurse (RIX) 33
-1 Curiosity Crafter (C21) 24
-1 Curse of the Swine (C21) 118
-1 Deekah, Fractal Theorist (C21) 26
-1 Desolation Twin (BFZ) 6
-1 Esix, Fractal Bloom (C21) 10 F
-1 Eureka Moment (STX) 184
-1 Exotic Orchard (MIC) 173
-1 Ezuri's Predation (C21) 188
-11 Forest (M20) 278
-1 Forgotten Ancient (C16) 150
-1 Fractal Harness (C21) 61
-1 Garruk, Primal Hunter (C19) 167
-1 Geometric Nexus (C21) 77
-1 Golden Ratio (STX) 190
-1 Guardian Augmenter (C21) 389
-1 Hornet Nest (C21) 192
-1 Hornet Queen (C20) 176
-1 Hydra Broodmaster (C21) 194
-1 Idol of Oblivion (C21) 246
-1 Incubation / Incongruity (C21) 219
-1 Incubation Druid (PRNA) 131p
-10 Island (GN2) 57
-1 Kaseto, Orochi Archmage (C21) 221
-1 Kazandu Tuskcaller (CMA) 121
-1 Kodama's Reach (C16) 155
-1 Krosan Grip (C13) 153
-1 Llanowar Reborn (C13) 304
-1 Lonely Sandbar (DDT) 27
-1 Lumbering Falls (BFZ) 239
-1 Managorger Hydra (C21) 199
-1 Master Biomancer (C21) 224
-1 Mosswort Bridge (C16) 307
-1 Myriad Landscape (CMR) 487
-1 Nissa's Expedition (M15) 188
-1 Novijen, Heart of Progress (DIS) 175
-1 Opal Palace (CMR) 352
-1 Oran-Rief, the Vastwood (C21) 307
-1 Oversimplify (C21) 399
-1 Paradox Zone (C21) 391
-1 Perplexing Test (C21) 357
-1 Plaxcaster Frogling (C21) 226
-1 Primal Empathy (IKO) 200
-1 Quandrix Campus (STX) 271 F
-1 Quandrix Cultivator (STX) 218
-1 Rampaging Baloths (IMA) 184
-1 Rampant Growth (8ED) 274
-1 Rapid Hybridization (GK2) 109
-1 Reef Worm (C21) 127
-1 Replication Technique (C21) 358
-1 Return of the Wildspeaker (PELD) 172s F
-1 Rite of Replication (C21) 128
-1 Rogue's Passage (DDM) 77
-1 Ruxa, Patient Professor (C21) 66
-1 Sequence Engine (C21) 394
-1 Shamanic Revelation (PFRF) 138 F
-1 Simic Growth Chamber (C21) 317
-1 Simic Signet (MM3) 227
-1 Sol Ring (CMD) 261
-1 Spawning Kraken (C21) 33
-1 Spitting Image (CMR) 453
-1 Study Hall (C21) 80
-1 Temple of Mystery (M20) 255
-1 Temple of the False God (C13) 327
-1 Terastodon (CMR) 438
-1 Theoretical Duplication (C21) 34
-1 Tranquil Thicket (DDU) 29
-1 Trygon Predator (EMA) 209
-1 Yavimaya Coast (C20) 322
-1 Zimone, Quandrix Prodigy (STX) 250
+1 Nelly Borca, Impulsive Accuser (MKC) 4 *F*
+1 Access Tunnel (MKC) 247
+1 Agitator Ant (MKC) 145
+1 Ancient Stone Idol (MKC) 222
+1 Angel of the Ruins (MKC) 55
+1 Anya, Merciless Angel (MKC) 199
+1 Arcane Signet (MKC) 223
+1 Ash Barrens (MKC) 248
+1 Bloodthirsty Blade (MKC) 225
+1 Boros Garrison (MKC) 251
+1 Boros Reckoner (MKC) 201
+1 Brash Taunter (MKC) 148
+1 Castle Ardenvale (MKC) 253
+1 Comeuppance (MKC) 58
+1 Command Tower (MKC) 256
+1 Curse of Opulence (MKC) 150
+1 Darien, King of Kjeldor (MKC) 59
+1 Deflecting Palm (MKC) 205
+1 Disrupt Decorum (MKC) 151
+1 Duelist's Heritage (MKC) 60
+1 Elspeth, Sun's Champion (MKC) 62
+1 Escape Tunnel (MKM) 261
+1 Etali, Primal Storm (MKC) 152
+1 Exotic Orchard (MKC) 260
+1 Feather, Radiant Arbiter (MKC) 6 *F*
+1 Fellwar Stone (MKC) 228
+1 Fiendish Duo (MKC) 153
+1 Frontier Warmonger (MKC) 154
+1 Furycalm Snarl (MKC) 263
+1 Ghostly Prison (MKC) 67
+1 Gideon's Sacrifice (MKC) 68
+1 Gisela, Blade of Goldnight (MKC) 211
+1 Havoc Eater (MKC) 31
+1 Hot Pursuit (MKC) 32
+1 Immortal Obligation (MKC) 10
+1 Kazuul, Tyrant of the Cliffs (MKC) 157
+1 Keeper of the Accord (MKC) 70
+1 Kher Keep (MKC) 270
+1 Labyrinth of Skophos (MKC) 272
+1 Loran of the Third Path (MKC) 71
+1 Martial Impetus (MKC) 72
+1 Mind Stone (MKC) 232
+1 Mob Verdict (MKC) 33
+7 Mountain (MKM) 283
+1 Myriad Landscape (MKC) 276
+1 Needle Spires (MKC) 278
+1 Orzhov Advokist (MKC) 77
+1 Otherworldly Escort (MKC) 12
+9 Plains (MKM) 277
+1 Prisoner's Dilemma (MKC) 34
+1 Promise of Loyalty (MKC) 79
+1 Ransom Note (MKC) 48
+1 Redemption Arc (MKC) 13
+1 Reliquary Tower (MKC) 282
+1 Rite of the Raging Storm (MKC) 159
+1 Rogue's Passage (MKC) 284
+1 Scavenger Grounds (MKC) 287
+1 Seal of Cleansing (MKC) 80
+1 Selfless Squire (MKC) 82
+1 Sevinne's Reclamation (MKC) 83
+1 Shiny Impetus (MKC) 161
+1 Slayers' Stronghold (MKC) 295
+1 Smuggler's Share (MKC) 84
+1 Sol Ring (MKC) 237
+1 Solemn Simulacrum (MKC) 238
+1 Soul Snare (MKC) 85
+1 Spectacular Showdown (MKC) 162
+1 Stalking Leonin (MKC) 86
+1 Steel Hellkite (MKC) 239
+1 Sun Titan (MKC) 87
+1 Sunhome, Fortress of the Legion (MKC) 298
+1 Take the Bait (MKC) 43
+1 Talisman of Conviction (MKC) 240
+1 Temple of the False God (MKC) 305
+1 Temple of Triumph (MKC) 306
+1 Thought Vessel (MKC) 245
+1 Throne of the High City (MKC) 307
+1 Tome of Legends (MKC) 246
+1 Trouble in Pairs (MKC) 15
+1 Vengeful Ancestor (MKC) 163
+1 Vow of Duty (MKC) 89
+1 Vow of Lightning (MKC) 164
+1 Wall of Omens (MKC) 90
+1 War Room (MKC) 310
+1 Windborn Muse (MKC) 92
+1 Winds of Rath (MKC) 93
