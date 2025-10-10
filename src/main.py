@@ -12,7 +12,11 @@ def parse_line(line: str) -> Dict[str, str | int]:
     first, second = line.split("(")
     n, name = first.split(" ", 1)
     code_set, number_set = second.split(")")
-    number_set = number_set.split()[0]
+
+    if code_set == "PLST":
+        code_set, number_set = number_set.split()[0].split("-")
+    else:
+        number_set = number_set.split()[0]
     return { "n": int(n), "name": re.sub(r'[^a-z ]+', '', name.strip().lower()), "code_set": code_set, "number_set": int(number_set) }
 def read_cards() -> List[Dict[str, str | int]]:
     with open(FILE_PATH) as f:
