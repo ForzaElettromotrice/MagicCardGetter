@@ -1,3 +1,4 @@
+import os
 import re
 from typing import List, Dict
 
@@ -37,6 +38,11 @@ def get_image_url(url: str) -> str:
 
 def save_image(url: str, n: int, name: str):
     response = requests.get(url)
+
+    name = name.replace(" ", "_")
+    if not os.path.exists(OUTPUT_DIR):
+        os.makedirs(OUTPUT_DIR)
+
     if n == 1:
         with open(f"{OUTPUT_DIR}/{name}.webp", "wb") as f:
             f.write(response.content)
