@@ -19,7 +19,7 @@ def parse_line(line: str) -> Dict[str, str | int]:
         code_set, number_set = number_set.split()[0].split("-")
     else:
         number_set = number_set.split()[0]
-    return { "n": int(n), "name": re.sub(r'[^a-z ]+', '', name.strip()), "code_set": code_set, "number_set": number_set }
+    return { "n": int(n), "name": re.sub(r'[^a-z A-Z]+', '', name.strip()), "code_set": code_set, "number_set": number_set }
 def read_cards() -> List[Dict[str, str | int]]:
     with open(FILE_PATH) as f:
         cards = [parse_line(line) for line in f]
@@ -40,7 +40,10 @@ def get_image_url(url: str) -> str:
 def get_versions(name: str) -> List[Tuple[str, str]]:
     params = { "exact": name }
     response = requests.get(f"{SCRYFALL_BASE_URL}/cards/named", params = params)
+    if "prints_search_uri" not in response.json():
+        return []
     response = requests.get(response.json()["prints_search_uri"])
+
     cards = response.json()["data"]
     return [(card["set"], card["collector_number"]) for card in cards]
 def get_another_image_url(name: str) -> str:
@@ -69,7 +72,7 @@ def save_image(url: str, n: int, name: str):
 
 def main():
     cards = read_cards()
-    
+
     for diz in cards:
         n, name, code_set, number_set = diz.values()
         url = find_card_url(name, code_set, number_set)
