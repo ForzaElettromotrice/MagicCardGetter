@@ -8,4 +8,5 @@ Ogni riga deve essere del formato `<quantità> <nome carta> (<codice set>) <nume
 maggior parte dei siti delle liste di carte.
 
 Poi basta eseguire il programma e le carte saranno nella cartella `out_images` che verrà creata.
-Se non viene trovata la versione italiana non verrà scaricata nessuna immagine
+Se non viene trovata la versione italiana del set richiesto verrà scaricata la versione italiana del primo set che ne ha
+una (se esiste)
