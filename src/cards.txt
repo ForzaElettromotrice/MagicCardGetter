@@ -1,86 +1,66 @@
-1 Nelly Borca, Impulsive Accuser (MKC) 4 *F*
-1 Access Tunnel (MKC) 247
-1 Agitator Ant (MKC) 145
-1 Ancient Stone Idol (MKC) 222
-1 Angel of the Ruins (MKC) 55
-1 Anya, Merciless Angel (MKC) 199
-1 Arcane Signet (MKC) 223
-1 Ash Barrens (MKC) 248
-1 Bloodthirsty Blade (MKC) 225
-1 Boros Garrison (MKC) 251
-1 Boros Reckoner (MKC) 201
-1 Brash Taunter (MKC) 148
-1 Castle Ardenvale (MKC) 253
-1 Comeuppance (MKC) 58
-1 Command Tower (MKC) 256
-1 Curse of Opulence (MKC) 150
-1 Darien, King of Kjeldor (MKC) 59
-1 Deflecting Palm (MKC) 205
-1 Disrupt Decorum (MKC) 151
-1 Duelist's Heritage (MKC) 60
-1 Elspeth, Sun's Champion (MKC) 62
-1 Escape Tunnel (MKM) 261
-1 Etali, Primal Storm (MKC) 152
-1 Exotic Orchard (MKC) 260
-1 Feather, Radiant Arbiter (MKC) 6 *F*
-1 Fellwar Stone (MKC) 228
-1 Fiendish Duo (MKC) 153
-1 Frontier Warmonger (MKC) 154
-1 Furycalm Snarl (MKC) 263
-1 Ghostly Prison (MKC) 67
-1 Gideon's Sacrifice (MKC) 68
-1 Gisela, Blade of Goldnight (MKC) 211
-1 Havoc Eater (MKC) 31
-1 Hot Pursuit (MKC) 32
-1 Immortal Obligation (MKC) 10
-1 Kazuul, Tyrant of the Cliffs (MKC) 157
-1 Keeper of the Accord (MKC) 70
-1 Kher Keep (MKC) 270
-1 Labyrinth of Skophos (MKC) 272
-1 Loran of the Third Path (MKC) 71
-1 Martial Impetus (MKC) 72
-1 Mind Stone (MKC) 232
-1 Mob Verdict (MKC) 33
-7 Mountain (MKM) 283
-1 Myriad Landscape (MKC) 276
-1 Needle Spires (MKC) 278
-1 Orzhov Advokist (MKC) 77
-1 Otherworldly Escort (MKC) 12
-9 Plains (MKM) 277
-1 Prisoner's Dilemma (MKC) 34
-1 Promise of Loyalty (MKC) 79
-1 Ransom Note (MKC) 48
-1 Redemption Arc (MKC) 13
-1 Reliquary Tower (MKC) 282
-1 Rite of the Raging Storm (MKC) 159
-1 Rogue's Passage (MKC) 284
-1 Scavenger Grounds (MKC) 287
-1 Seal of Cleansing (MKC) 80
-1 Selfless Squire (MKC) 82
-1 Sevinne's Reclamation (MKC) 83
-1 Shiny Impetus (MKC) 161
-1 Slayers' Stronghold (MKC) 295
-1 Smuggler's Share (MKC) 84
-1 Sol Ring (MKC) 237
-1 Solemn Simulacrum (MKC) 238
-1 Soul Snare (MKC) 85
-1 Spectacular Showdown (MKC) 162
-1 Stalking Leonin (MKC) 86
-1 Steel Hellkite (MKC) 239
-1 Sun Titan (MKC) 87
-1 Sunhome, Fortress of the Legion (MKC) 298
-1 Take the Bait (MKC) 43
-1 Talisman of Conviction (MKC) 240
-1 Temple of the False God (MKC) 305
-1 Temple of Triumph (MKC) 306
-1 Thought Vessel (MKC) 245
-1 Throne of the High City (MKC) 307
-1 Tome of Legends (MKC) 246
-1 Trouble in Pairs (MKC) 15
-1 Vengeful Ancestor (MKC) 163
-1 Vow of Duty (MKC) 89
-1 Vow of Lightning (MKC) 164
-1 Wall of Omens (MKC) 90
-1 War Room (MKC) 310
-1 Windborn Muse (MKC) 92
-1 Winds of Rath (MKC) 93
+1 Willowdusk, Essence Seer (C21) 6 
+1 Ageless Entity (DST) 73
+1 Ancient Craving (C21) 135
+1 Arcane Signet (ELD) 331
+1 Blighted Woodland (BFZ) 233
+1 Bloodthirsty Aerialist (M20) 91
+1 Bloodtracker (VOC) 122
+1 Command Tower (VOC) 172
+1 Cultivate (PLST) C18-138
+1 Damnable Pact (C17) 108
+1 Deadly Tempest (PLST) C15-19
+1 Defiant Bloodlord (C21) 142
+1 Dina, Soul Steeper (STX) 178
+1 Druidic Satchel (C13) 242
+1 Elixir of Immortality (M11) 206
+1 Epicure of Blood (PLST) M19-95
+1 Essence Pulse (C21) 39
+1 Exotic Orchard (CM2) 250
+1 Ezzaroot Channeler (C21) 60
+1 Feed the Swarm (ZNR) 102
+11 Forest (ELD) 266
+1 Gaze of Granite (GK1) 61
+1 Gift of Paradise (PLST) AKH-167
+1 Gingerbread Cabin (ELD) 245
+1 Gluttonous Troll (ELD) 327
+1 Golgari Rot Farm (CM2) 254
+1 Greed (MH2) 274
+1 Gyome, Master Chef (C21) 5 
+1 Healing Technique (C21) 63
+1 Honor Troll (STX) 134
+1 Jungle Hollow (PLST) KTK-235
+1 Leyline Prowler (WAR) 202
+1 Llanowar Wastes (C19) 258
+1 Loxodon Warhammer (PLST) C17-216
+1 Marshland Bloodcaster (C21) 43
+1 Mortality Spear (STX) 207
+1 Myriad Landscape (C19) 261
+1 Nissa's Renewal (BFZ) 180
+1 Paradise Plume (TSP) 260
+1 Pristine Talisman (CM2) 211
+1 Pulse of Murasa (PLST) OGW-141
+1 Radiant Fountain (M21) 248
+1 Rampant Growth (PLST) DDS-48
+1 Reckless Spite (PLST) E01-37
+1 Revival Experiment (C21) 74
+1 Rogue's Passage (C19) 270
+1 Sapling of Colfenor (C21) 228
+1 Sapseep Forest (DDH) 36
+1 Silversmote Ghoul (M21) 122
+1 Sol Ring (PLST) C18-222
+1 Sproutback Trudge (C21) 68
+1 Study Hall (C21) 80
+1 Suffer the Past (ROE) 128
+1 Sun Droplet (C13) 261
+11 Swamp (UND) 91
+1 Tainted Wood (DDM) 78
+1 Talisman of Resilience (MH1) 234
+1 Taste of Death (C21) 156
+1 Temple of Malady (CMM) 1043
+1 Temple of the False God (PLST) C18-285
+1 Tivash, Gloom Summoner (C21) 45
+1 Vampire Nighthawk (C17) 129
+1 Verdant Sun's Avatar (LCC) 262
+1 Well of Lost Dreams (BRR) 62
+1 Witherbloom Campus (STX) 275
+1 Yedora, Grave Gardener (CMM) 333
