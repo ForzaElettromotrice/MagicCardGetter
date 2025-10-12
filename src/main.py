@@ -1,14 +1,20 @@
 import os
 import re
+from io import BytesIO
 from typing import List, Dict, Tuple
 
 import requests
+from PIL import Image
+from PIL.ImageFile import ImageFile
 from bs4 import BeautifulSoup
 
 WIZARDS_GATHERER_BASE_URL = "https://gatherer.wizards.com"
 SCRYFALL_BASE_URL = "https://api.scryfall.com"
 FILE_PATH = "cards.txt"
 OUTPUT_DIR = "out_images"
+
+MIN_WIDTH = 500
+MIN_HEIGHT = 800
 
 def parse_line(line: str) -> Dict[str, str | int]:
     first, second = line.split("(")
@@ -55,22 +61,40 @@ def get_another_image_url(name: str) -> str:
             return image_url
     return ""
 
-def save_image(url: str, n: int, name: str):
-    response = requests.get(url)
-
+def save_image(img: ImageFile, n: int, name: str):
     name = name.replace(" ", "_")
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
 
     if n == 1:
-        with open(f"{OUTPUT_DIR}/{name}.webp", "wb") as f:
-            f.write(response.content)
+        img.save(f"{OUTPUT_DIR}/{name}.webp")
         return
     for i in range(n):
-        with open(f"{OUTPUT_DIR}/{name}_{i}.webp", "wb") as f:
-            f.write(response.content)
+        img.save(f"{OUTPUT_DIR}/{name}_{i + 1}.webp")
 
-def main():
+def check_image(url: str) -> ImageFile | None:
+    response = requests.get(url)
+
+    with Image.open(BytesIO(response.content)) as im:
+        if im.width >= MIN_WIDTH and im.height >= MIN_HEIGHT:
+            return im
+        else:
+            return None
+
+def get_card(name: str, code_set: str, number_set: str, n: int):
+    versions = get_versions(name)
+    versions.sort(key = lambda card: (card[0].lower() == code_set.lower(), card[1] == number_set), reverse = True)
+
+    for set_, number in versions:
+        url = find_card_url(name, set_, number)
+        image_url = get_image_url(url)
+        img = check_image(image_url)
+        if img is None:
+            continue
+        save_image(img, n, name)
+        break
+
+def main2():
     cards = read_cards()
 
     for diz in cards:
@@ -82,8 +106,23 @@ def main():
             if image_url == "":
                 print(f"Card {name} not found")
                 continue
+        print(image_url)
         save_image(image_url, n, name)
         print(f"Card {name} saved")
+        exit(0)
+
+def main():
+    cards = read_cards()
+
+    for diz in cards:
+        n, name, code_set, number_set = diz.values()
+
+        get_card(name, code_set, number_set, n)
+        exit(0)
+        # ora devo provare prima con il codice e il set proposti, se valida scaricare l'immagine
+        # altrimenti prendere la lista delle versioni, provare quelle
+        # se nessuna è valida allora prendere quella con risoluzione migliore
+        # se non esite amen
 
 if __name__ == '__main__':
     main()
