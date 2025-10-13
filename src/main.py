@@ -32,7 +32,7 @@ def read_cards() -> List[Dict[str, str | int]]:
     return cards
 
 def find_card_url(name: str, code_set: str, number_set: str) -> str:
-    return f"{WIZARDS_GATHERER_BASE_URL}/{code_set.upper()}/it-it/{number_set}/{name.replace(" ", "-").lower()}"
+    return f"{WIZARDS_GATHERER_BASE_URL}/{code_set.upper()}/it-it/{number_set}/{name.replace(' ', '-').lower()}"
 def get_image_url(url: str) -> str:
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
