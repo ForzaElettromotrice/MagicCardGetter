@@ -52,14 +52,6 @@ def get_versions(name: str) -> List[Tuple[str, str]]:
 
     cards = response.json()["data"]
     return [(card["set"], card["collector_number"]) for card in cards]
-def get_another_image_url(name: str) -> str:
-    versions = get_versions(name)
-    for set_, number in versions:
-        url = find_card_url(name, set_, number)
-        image_url = get_image_url(url)
-        if image_url != "":
-            return image_url
-    return ""
 
 def save_image(img: ImageFile, n: int, name: str):
     name = name.replace(" ", "_")
@@ -72,57 +64,50 @@ def save_image(img: ImageFile, n: int, name: str):
     for i in range(n):
         img.save(f"{OUTPUT_DIR}/{name}_{i + 1}.webp")
 
-def check_image(url: str) -> ImageFile | None:
+def check_image(url: str) -> Tuple[bool, ImageFile]:
     response = requests.get(url)
 
     with Image.open(BytesIO(response.content)) as im:
         if im.width >= MIN_WIDTH and im.height >= MIN_HEIGHT:
-            return im
+            return True, im
         else:
-            return None
+            return False, im
 
-def get_card(name: str, code_set: str, number_set: str, n: int):
+def get_card(name: str, code_set: str, number_set: str, n: int)-> bool:
     versions = get_versions(name)
     versions.sort(key = lambda card: (card[0].lower() == code_set.lower(), card[1] == number_set), reverse = True)
 
+    imgs:list[ImageFile] = []
     for set_, number in versions:
         url = find_card_url(name, set_, number)
         image_url = get_image_url(url)
-        img = check_image(image_url)
-        if img is None:
+        if image_url == "":
+            continue
+        ok, img = check_image(image_url)
+        imgs.append(img)
+        if not ok:
             continue
         save_image(img, n, name)
-        break
+        return True
 
-def main2():
-    cards = read_cards()
+    if len(imgs) == 0:
+        return False
 
-    for diz in cards:
-        n, name, code_set, number_set = diz.values()
-        url = find_card_url(name, code_set, number_set)
-        image_url = get_image_url(url)
-        if image_url == "":
-            image_url = get_another_image_url(name)
-            if image_url == "":
-                print(f"Card {name} not found")
-                continue
-        print(image_url)
-        save_image(image_url, n, name)
-        print(f"Card {name} saved")
-        exit(0)
+    imgs.sort(key = lambda im: im.width * im.height, reverse = True)
+    img = imgs[0]
+    save_image(img, n, name)
+
+    return True
 
 def main():
     cards = read_cards()
 
     for diz in cards:
         n, name, code_set, number_set = diz.values()
-
-        get_card(name, code_set, number_set, n)
-        exit(0)
-        # ora devo provare prima con il codice e il set proposti, se valida scaricare l'immagine
-        # altrimenti prendere la lista delle versioni, provare quelle
-        # se nessuna è valida allora prendere quella con risoluzione migliore
-        # se non esite amen
+        if get_card(name, code_set, number_set, n):
+            print(f"Card {name} downloaded")
+        else:
+            print(f"Card {name} not found")
 
 if __name__ == '__main__':
     main()
