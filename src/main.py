@@ -84,17 +84,17 @@ def get_versions(name: str) -> List[Tuple[str, str]]:
 
 def get_image(url: str) -> ImageFile:
     response = requests.get(url)
-    return Image.open(BytesIO(response.content))
+    return Image.open(BytesIO(response.content)).convert("RGB")
 def save_image(img: ImageFile, n: int, name: str):
     name = name.replace(" ", "_")
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
 
     if n == 1:
-        img.save(f"{OUTPUT_DIR}/{name}.png", "png")
+        img.save(f"{OUTPUT_DIR}/{name}.png", "PNG")
         return
     for i in range(n):
-        img.save(f"{OUTPUT_DIR}/{name}_{i + 1}.png", "png")
+        img.save(f"{OUTPUT_DIR}/{name}_{i + 1}.png", "PNG")
 
 def process_card(name: str, set_code: str, set_number: str):
     url = find_card_url(name, set_code, set_number)
