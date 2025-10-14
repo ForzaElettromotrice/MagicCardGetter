@@ -8,4 +8,4 @@ min_height = 800
 format = "webp"
 
 [blacklist]
-set = ["example", "example2"]
+set = []
