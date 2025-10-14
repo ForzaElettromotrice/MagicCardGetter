@@ -19,13 +19,15 @@ MIN_HEIGHT = 800
 def parse_line(line: str) -> Dict[str, str | int]:
     first, second = line.split("(")
     n, name = first.split(" ", 1)
+    if "/" in name:
+        name, _ = name.split("/", 1)
     set_code, set_number = second.split(")")
 
     if set_code == "PLST":
         set_code, set_number = set_number.split()[0].split("-")
     else:
         set_number = set_number.split()[0]
-    return { "n": int(n), "name": re.sub(r'[^a-z A-Z]+', '', name.strip()), "set_code": set_code, "set_number": set_number }
+    return { "n": int(n), "name": re.sub(r'[^a-z A-Z-]+', '', name.strip()), "set_code": set_code, "set_number": set_number }
 def read_cards() -> List[Dict[str, str | int]]:
     with open(FILE_PATH) as f:
         cards = [parse_line(line) for line in f]
