@@ -91,10 +91,10 @@ def save_image(img: ImageFile, n: int, name: str):
         os.makedirs(OUTPUT_DIR)
 
     if n == 1:
-        img.save(f"{OUTPUT_DIR}/{name}.webp")
+        img.save(f"{OUTPUT_DIR}/{name}.png", "png")
         return
     for i in range(n):
-        img.save(f"{OUTPUT_DIR}/{name}_{i + 1}.webp")
+        img.save(f"{OUTPUT_DIR}/{name}_{i + 1}.png", "png")
 
 def process_card(name: str, set_code: str, set_number: str):
     url = find_card_url(name, set_code, set_number)
