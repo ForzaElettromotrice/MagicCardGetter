@@ -19,20 +19,20 @@ MIN_HEIGHT = 800
 def parse_line(line: str) -> Dict[str, str | int]:
     first, second = line.split("(")
     n, name = first.split(" ", 1)
-    code_set, number_set = second.split(")")
+    set_code, set_number = second.split(")")
 
-    if code_set == "PLST":
-        code_set, number_set = number_set.split()[0].split("-")
+    if set_code == "PLST":
+        set_code, set_number = set_number.split()[0].split("-")
     else:
-        number_set = number_set.split()[0]
-    return { "n": int(n), "name": re.sub(r'[^a-z A-Z]+', '', name.strip()), "code_set": code_set, "number_set": number_set }
+        set_number = set_number.split()[0]
+    return { "n": int(n), "name": re.sub(r'[^a-z A-Z]+', '', name.strip()), "set_code": set_code, "set_number": set_number }
 def read_cards() -> List[Dict[str, str | int]]:
     with open(FILE_PATH) as f:
         cards = [parse_line(line) for line in f]
     return cards
 
-def find_card_url(name: str, code_set: str, number_set: str) -> str:
-    return f"{WIZARDS_GATHERER_BASE_URL}/{code_set.upper()}/it-it/{number_set}/{name.replace(' ', '-').lower()}"
+def find_card_url(name: str, set_code: str, set_number: str) -> str:
+    return f"{WIZARDS_GATHERER_BASE_URL}/{set_code.upper()}/it-it/{set_number}/{name.replace(' ', '-').lower()}"
 def get_image_url(url: str) -> str:
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -53,6 +53,9 @@ def get_versions(name: str) -> List[Tuple[str, str]]:
     cards = response.json()["data"]
     return [(card["set"], card["collector_number"]) for card in cards]
 
+def get_image(url: str) -> ImageFile:
+    response = requests.get(url)
+    return Image.open(BytesIO(response.content))
 def save_image(img: ImageFile, n: int, name: str):
     name = name.replace(" ", "_")
     if not os.path.exists(OUTPUT_DIR):
@@ -64,47 +67,37 @@ def save_image(img: ImageFile, n: int, name: str):
     for i in range(n):
         img.save(f"{OUTPUT_DIR}/{name}_{i + 1}.webp")
 
-def check_image(url: str) -> Tuple[bool, ImageFile]:
-    response = requests.get(url)
+def process_card(name: str, set_code: str, set_number: str):
+    url = find_card_url(name, set_code, set_number)
+    image_url = get_image_url(url)
+    if image_url == "":
+        return None
+    img = get_image(image_url)
+    return img
 
-    with Image.open(BytesIO(response.content)) as im:
-        if im.width >= MIN_WIDTH and im.height >= MIN_HEIGHT:
-            return True, im
-        else:
-            return False, im
-
-def get_card(name: str, code_set: str, number_set: str, n: int)-> bool:
+def get_card(name: str, set_code: str, set_number: str, n: int) -> bool:
     versions = get_versions(name)
-    versions.sort(key = lambda card: (card[0].lower() == code_set.lower(), card[1] == number_set), reverse = True)
+    versions.sort(key = lambda card: (card[0].lower() == set_code.lower(), card[1] == set_number), reverse = True)
 
-    imgs:list[ImageFile] = []
-    for set_, number in versions:
-        url = find_card_url(name, set_, number)
-        image_url = get_image_url(url)
-        if image_url == "":
-            continue
-        ok, img = check_image(image_url)
-        imgs.append(img)
-        if not ok:
-            continue
-        save_image(img, n, name)
-        return True
+    imgs: list[ImageFile] = [process_card(name, set_, number) for set_, number in versions]
+    imgs = [img for img in imgs if img is not None]
 
     if len(imgs) == 0:
         return False
 
-    imgs.sort(key = lambda im: im.width * im.height, reverse = True)
+    if imgs[0].width < MIN_WIDTH or imgs[0].height < MIN_HEIGHT:
+        imgs.sort(key = lambda im: im.width * im.height, reverse = True)
+
     img = imgs[0]
     save_image(img, n, name)
-
     return True
 
 def main():
     cards = read_cards()
 
     for diz in cards:
-        n, name, code_set, number_set = diz.values()
-        if get_card(name, code_set, number_set, n):
+        n, name, set_code, set_number = diz.values()
+        if get_card(name, set_code, set_number, n):
             print(f"Card {name} downloaded")
         else:
             print(f"Card {name} not found")

@@ -10,6 +10,6 @@ maggior parte dei siti delle liste di carte.
 Poi basta eseguire il programma e le carte saranno nella cartella `out_images` che verrà creata.
 Si può inserire la risoluzione minima desiderata modificando i parametri `MIN_WIDTH` e `MIN_HEIGTH` nel file `main.py`.
 
-Se non viene trovata la versione italiana del set richiesto, o non è della risoluzione richiesta, verrà scaricata la versione italiana del primo set che soddisfa questi requisiti.
-In caso non esista nessuna carta italiana della risoluzione richiesta verrà scaricata quella con risoluzione maggiore fra le carte italiane.
+Se non viene trovata la versione italiana del set richiesto, o non è della risoluzione richiesta, verrà scaricata la
+versione italiana con risoluzione maggiore.
 In caso non esista nessuna carta italiana, non verrà scaricata alcuna carta.
