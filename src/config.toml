@@ -1,0 +1,11 @@
+[paths]
+file_path = "cards.txt"
+output_dir = "out_images"
+
+[images]
+min_width = 500
+min_height = 800
+format = "webp"
+
+[blacklist]
+set = ["example", "example2"]

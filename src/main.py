@@ -1,5 +1,6 @@
 import os
 import re
+import tomllib
 from io import BytesIO
 from typing import List, Dict, Tuple
 
@@ -10,11 +11,37 @@ from bs4 import BeautifulSoup
 
 WIZARDS_GATHERER_BASE_URL = "https://gatherer.wizards.com"
 SCRYFALL_BASE_URL = "https://api.scryfall.com"
-FILE_PATH = "cards.txt"
-OUTPUT_DIR = "out_images"
+def deep_update(a: dict, b: dict) -> dict:
+    for k, v in b.items():
+        if k in a and isinstance(a[k], dict) and isinstance(v, dict):
+            deep_update(a[k], v)
+        else:
+            a[k] = v
+    return a
+def load_config(path: str = "config.toml") -> dict:
+    defaults = {
+        "paths": { "file_path": "cards.txt", "output_dir": "out_images" },
+        "images": { "min_width": 500, "min_height": 800 },
+        "blacklist": { "set": [] }
+    }
+    if not os.path.exists(path):
+        return defaults
+    with open(path, "rb") as f:
+        data = tomllib.load(f)
 
-MIN_WIDTH = 500
-MIN_HEIGHT = 800
+    deep_update(defaults, data)
+
+    return defaults
+
+CONFIG = load_config()
+
+FILE_PATH = CONFIG["paths"]["file_path"]
+OUTPUT_DIR = CONFIG["paths"]["output_dir"]
+
+MIN_WIDTH = CONFIG["images"]["min_width"]
+MIN_HEIGHT = CONFIG["images"]["min_height"]
+
+SET_BLACKLIST = [set_.lower() for set_ in CONFIG["blacklist"]["set"]]
 
 def parse_line(line: str) -> Dict[str, str | int]:
     first, second = line.split("(")
@@ -53,7 +80,7 @@ def get_versions(name: str) -> List[Tuple[str, str]]:
     response = requests.get(response.json()["prints_search_uri"])
 
     cards = response.json()["data"]
-    return [(card["set"], card["collector_number"]) for card in cards]
+    return [(card["set"], card["collector_number"]) for card in cards if card["set"].lower() not in SET_BLACKLIST]
 
 def get_image(url: str) -> ImageFile:
     response = requests.get(url)
