@@ -5,8 +5,8 @@ output_dir = "out_images"
 [images]
 min_width = 500
 min_height = 700
-target_width = 2000
-target_height = 2800
+target_width = 0
+target_height = 0
 
 [blacklist]
 set = []

@@ -22,7 +22,7 @@ def deep_update(a: dict, b: dict) -> dict:
 def load_config(path: str = "config.toml") -> dict:
     defaults = {
         "paths": { "file_path": "cards.txt", "output_dir": "out_images" },
-        "images": { "min_width": 500, "min_height": 800, "target_width": 2000, "target_height": 2800 },
+        "images": { "min_width": 500, "min_height": 800, "target_width": 0, "target_height": 0 },
         "blacklist": { "set": [] }
     }
     if not os.path.exists(path):
