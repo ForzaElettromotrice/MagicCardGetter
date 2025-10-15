@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 
 WIZARDS_GATHERER_BASE_URL = "https://gatherer.wizards.com"
 SCRYFALL_BASE_URL = "https://api.scryfall.com"
+
 def deep_update(a: dict, b: dict) -> dict:
     for k, v in b.items():
         if k in a and isinstance(a[k], dict) and isinstance(v, dict):
@@ -21,7 +22,7 @@ def deep_update(a: dict, b: dict) -> dict:
 def load_config(path: str = "config.toml") -> dict:
     defaults = {
         "paths": { "file_path": "cards.txt", "output_dir": "out_images" },
-        "images": { "min_width": 500, "min_height": 800 },
+        "images": { "min_width": 500, "min_height": 800, "target_width": 2000, "target_height": 2800 },
         "blacklist": { "set": [] }
     }
     if not os.path.exists(path):
@@ -40,6 +41,9 @@ OUTPUT_DIR = CONFIG["paths"]["output_dir"]
 
 MIN_WIDTH = CONFIG["images"]["min_width"]
 MIN_HEIGHT = CONFIG["images"]["min_height"]
+
+TARGET_WIDTH = CONFIG["images"]["target_width"]
+TARGET_HEIGHT = CONFIG["images"]["target_height"]
 
 SET_BLACKLIST = [set_.lower() for set_ in CONFIG["blacklist"]["set"]]
 
@@ -89,12 +93,15 @@ def save_image(img: ImageFile, n: int, name: str):
     name = name.replace(" ", "_")
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
+    if TARGET_WIDTH != 0 and TARGET_HEIGHT != 0:
+        img = img.resize((TARGET_WIDTH, TARGET_HEIGHT), resample = Image.Resampling.LANCZOS)
 
     if n == 1:
         img.save(f"{OUTPUT_DIR}/{name}.png", "PNG")
         return
     for i in range(n):
         img.save(f"{OUTPUT_DIR}/{name}_{i + 1}.png", "PNG")
+    img.close()
 
 def process_card(name: str, set_code: str, set_number: str):
     url = find_card_url(name, set_code, set_number)
@@ -119,6 +126,8 @@ def get_card(name: str, set_code: str, set_number: str, n: int) -> bool:
 
     img = imgs[0]
     save_image(img, n, name)
+    for img in imgs[1:]:
+        img.close()
     return True
 
 def main():
