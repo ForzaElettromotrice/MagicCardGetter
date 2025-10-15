@@ -13,7 +13,8 @@ Nel file `config.toml` si può decidere:
 
 - il percorso del file contenente la lista delle carte
 - il percorso della cartella in cui salvare le immagini
-- la risoluzione minima delle immagini
+- la risoluzione minima delle immagini da scaricare
+- la risoluzione delle immagini dopo l'upscale (0 per disabilitare)
 - i set da ignorare
 
 Se non viene trovata la versione italiana del set richiesto, o non è della risoluzione richiesta, verrà scaricata la
